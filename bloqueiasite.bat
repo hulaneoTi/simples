@@ -8,7 +8,8 @@ set /p site="Qual site deseja bloquear: "
 if "%site%"=="remover" (goto remove)
 :add
 echo 1.1.1.1 %site%>>C:\Windows\System32\drivers\etc\hosts
-GOTO :EOF
+exit
 :remove
 type C:\Windows\System32\drivers\etc\hosts | findstr /v 1.1.1.1 > temp
 type temp > C:\Windows\System32\drivers\etc\hosts
+exit
