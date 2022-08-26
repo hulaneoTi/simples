@@ -1,0 +1,3 @@
+#!/bin/bash
+#caminho="$(wslpath "$(cmd.exe /C "echo|set /p="%USERPROFILE%\/OneDrive\ -\ TI\ Safe\/Área\ de\ Trabalho"")")"
+echo funcionou!
