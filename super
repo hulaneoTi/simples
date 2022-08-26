@@ -1,0 +1,6 @@
+#!/bin/bash
+echo"
+export PATH=$PATH:./
+caminho="$(wslpath "$(cmd.exe /C "echo|set /p="%USERPROFILE%"")")"
+alias desktop="cd $caminho\/OneDrive\ -\ TI\ Safe/Área\ de\ Trabalho/"
+unset caminho" >> ~/bashrc
